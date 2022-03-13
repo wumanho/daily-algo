@@ -14,11 +14,20 @@ function Rec(cur: number[], start: number, result: number[][]) {
         result.push(cur)
     } else {
         //遍历从start开始的子数组
-        for (let i = start; i < cur.length - 1; i++) {
-            [cur[i], cur[start]] = [cur[start], cur[i]];
+        for (let i = start; i < cur.length; ++i) {
+            swap(cur, i, start)
             Rec(cur, start + 1, result);
-            [cur[start], cur[i]] = [cur[i], cur[start]];
+            swap(cur, i, start)
         }
     }
 }
+
+function swap(nums: number[], i: number, start: number) {
+    let temp = nums[i]
+    nums[i] = nums[start]
+    nums[start] = temp
+}
+
+
+permute([1, 2, 3])
 
